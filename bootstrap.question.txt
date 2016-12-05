@@ -1,0 +1,32 @@
+    var table = $("#mytest");
+
+------------------------------------------------------------------------init
+        var options = {
+            "resizable": true,
+            "clickToSelect": true,
+            "singleSelect": 0,
+            "showExport": true,
+            "exportTypes": ["csv",
+                "txt",
+                "sql",
+                "excel"],
+            "showColumns": true,
+            "search": true,
+            "searchOnEnterKey": true,
+            "searchAlign": "right",
+            "striped": true,
+            "pagination": true,
+            "pageSize": 20,
+            "exportDataType": 'all',
+            "columns": getTableColumns()
+        };
+
+        table.bootstrapTable(options).bootstrapTable('showLoading');
+
+--------------------------------------------------------------------------update
+                loadingData = {
+                    "data" :allData
+                };
+                table.bootstrapTable('refreshOptions', loadingData);
+                $('#toolbar').show();
+
