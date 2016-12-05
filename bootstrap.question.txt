@@ -30,3 +30,19 @@
                 table.bootstrapTable('refreshOptions', loadingData);
                 $('#toolbar').show();
 
+--------------------------------------------------------------------------answer
+file: tableExport.js:
+you can change the code to this, but *.csv file would be messy code for
+"simple chinese";
+line:1315-1318
+                        if (header.toLowerCase().indexOf("base64,") >= 0)
+                            DownloadLink.href = header + base64encode(data);
+                        else
+                            DownloadLink.href = header + encodeURIComponent(data);
+replace:
+                        var URL = window.URL || window.webkitURL;
+                        blob = new Blob([convertCode(data)], { type:'text/csv;charset=windows-1252;'});
+                        var csvUrl = URL.createObjectURL(blob);
+                        DownloadLink.href = csvUrl;
+
+
